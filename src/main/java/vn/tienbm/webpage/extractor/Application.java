@@ -15,6 +15,7 @@ import org.jsoup.select.Elements;
 import vn.tienbm.webpage.dateparser.DateParser;
 
 import java.text.DateFormat;
+import java.util.Date;
 
 
 /**
@@ -31,11 +32,12 @@ public class Application {
         DetectorFactory.loadProfile(config.getProfilePath());
         Detector detector = DetectorFactory.create();
         if (html != null) {
-            String text = ArticleExtractor.INSTANCE.getText(html);
             Document doc = Jsoup.parse(html);
+            System.out.println(html);
             System.out.println("Title: " + doc.getElementsByTag("title").text());
             long time = DateParser.getInstance(config).getDatetimeByStandardRegex(url, html);
-            System.out.print();
+            System.out.println(time);
+            String text = ArticleExtractor.INSTANCE.getText(html);
             Elements newsHeadlines = doc.select("img");
             for (Element i : newsHeadlines) {
                 System.out.println(i.toString());
