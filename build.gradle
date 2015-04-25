@@ -1,12 +1,31 @@
 apply plugin: 'java'
+apply plugin:'application'
+apply plugin: 'eclipse'
 
 sourceCompatibility = 1.5
 version = '1.0'
+applicationDefaultJvmArgs = ["-Dgreeting.language=en"]
+
+task createDocs {
+    def docs = file("$buildDir/docs")
+    outputs.dir docs
+    doLast {
+        docs.mkdirs()
+        new File(docs, "readme.txt").write("Read me!")
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    compile 'net.arnx:jsonic:1.2.7'
+    compile 'com.robbypond:boilerpipe:1.2.3'
+    compile 'org.jsoup:jsoup:1.8.1'
+    compile 'com.cybozu.labs:langdetect:1.1-20120112'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'org.apache.nutch:nutch:1.8'
+    compile 'mysql:mysql-connector-java:5.1.35'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
