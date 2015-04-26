@@ -41,7 +41,6 @@ public class Application {
             Elements newsHeadlines = doc.select("img");
             for (Element i : newsHeadlines) {
                 System.out.println(i.toString());
-//                System.out.println(i.attr("alt"));
 
             }
 
