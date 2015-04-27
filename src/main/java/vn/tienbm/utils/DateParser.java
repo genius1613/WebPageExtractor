@@ -1,4 +1,4 @@
-package vn.tienbm.webpage.dateparser;
+package vn.tienbm.utils;
 
 /**
  * Created by tienbm on 12/03/2015.

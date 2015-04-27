@@ -7,15 +7,12 @@ package vn.tienbm.webpage.extractor;
 import com.cybozu.labs.langdetect.DetectorFactory;
 import com.cybozu.labs.langdetect.Detector;
 import de.l3s.boilerpipe.extractors.ArticleExtractor;
-import org.apache.tika.utils.DateUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import vn.tienbm.webpage.dateparser.DateParser;
-
-import java.text.DateFormat;
-import java.util.Date;
+import vn.tienbm.utils.DateParser;
+import vn.tienbm.utils.WebpageClient;
 
 
 /**
@@ -24,10 +21,12 @@ import java.util.Date;
 
 public class Application {
 
+    public Application() {
+    }
 
     public static void main(String[] args) throws Exception {
         Config config = new Config();
-        String url = "http://vnexpress.net/tin-tuc/the-gioi/viet-nam-trieu-dai-su-canada-phan-doi-dao-luat-hanh-trinh-den-tu-do-3205906.html";
+        String url = "http://www.24h.com.vn/bong-da/arsenal-chelsea-bua-tiec-thinh-soan-h1-c48a705146.html";
         String html = WebpageClient.getWebpageSource(url);
         DetectorFactory.loadProfile(config.getProfilePath());
         Detector detector = DetectorFactory.create();
