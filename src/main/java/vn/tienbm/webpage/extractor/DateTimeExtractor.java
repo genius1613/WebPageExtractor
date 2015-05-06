@@ -1,4 +1,4 @@
-package vn.tienbm.utils;
+package vn.tienbm.webpage.extractor;
 
 /**
  * Created by tienbm on 12/03/2015.
@@ -6,7 +6,7 @@ package vn.tienbm.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import vn.tienbm.webpage.extractor.Config;
+import vn.tienbm.utils.Config;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -20,8 +20,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 // Singleton
-public class DateParser {
-    public static final Logger LOG = LoggerFactory.getLogger(DateParser.class);
+public class DateTimeExtractor {
+    public static final Logger LOG = LoggerFactory.getLogger(DateTimeExtractor.class);
 
     private String YEAR_LABLE = "pubYear";
     private String MON_LABLE = "pubMon";
@@ -43,7 +43,7 @@ public class DateParser {
     static List<String> c_listContentPatterns = new ArrayList<String>();
 
     // Private constructor prevents instantiation from other classes
-    private DateParser(String url) {
+    private DateTimeExtractor(String url) {
         /////////////////////////////////////////////
         // Map to get month
         c_monthIndex.put("má»™t", "1");
@@ -158,7 +158,7 @@ public class DateParser {
         c_listContentPatterns = loadListPatternsFromFile("/home/tienbm/IdeaProjects/BigCrawler/implementation/datcm/nutch-2.x/conf/regex_content.conf");
     }
 
-    public DateParser(Config config) {
+    public DateTimeExtractor(Config config) {
         c_monthIndex.put("má»™t", "1");
         c_monthIndex.put("hai", "2");
         c_monthIndex.put("ba", "3");
@@ -278,13 +278,13 @@ public class DateParser {
 //        //        private static final DateParser INSTANCE = new DateParser();
 //        private static final DateParser INSTANCE = new DateParser(Config);
 //    }
-    public static DateParser getInstance(String url) {
-        final DateParser INSTANCE = new DateParser(url);
+    public static DateTimeExtractor getInstance(String url) {
+        final DateTimeExtractor INSTANCE = new DateTimeExtractor(url);
         return INSTANCE;
     }
 
-    public static DateParser getInstance(Config config) {
-        final DateParser INSTANCE = new DateParser(config);
+    public static DateTimeExtractor getInstance(Config config) {
+        final DateTimeExtractor INSTANCE = new DateTimeExtractor(config);
         return INSTANCE;
     }
 
@@ -688,7 +688,7 @@ public class DateParser {
 
     private static String getCurrentDate(String url) {
         // Get the current date
-        return (DateParser.getInstance(url).dateToString(new Date(0)));
+        return (DateTimeExtractor.getInstance(url).dateToString(new Date(0)));
     }
 
     public String getWEB_SERVICE_URL() {

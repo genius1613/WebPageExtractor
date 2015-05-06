@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by tienbm on 27/04/2015.
  */
-public class ExtractedWebpage {
+public class Webpage {
     String content;
     Long published;
     List<Image> images;
@@ -13,7 +13,7 @@ public class ExtractedWebpage {
     String langugages;
     List<String> probalitiyLanguages;
 
-    public ExtractedWebpage(String content, Long published, List<Image> images, List<Video> videos, String langugages, List<String> probalitiyLanguages) {
+    public Webpage(String content, Long published, List<Image> images, List<Video> videos, String langugages, List<String> probalitiyLanguages) {
         this.content = content;
         this.published = published;
         this.images = images;

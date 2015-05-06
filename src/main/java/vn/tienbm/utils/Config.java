@@ -1,4 +1,4 @@
-package vn.tienbm.webpage.extractor;
+package vn.tienbm.utils;
 
 /**
  * Created by tienbm on 25/04/2015.

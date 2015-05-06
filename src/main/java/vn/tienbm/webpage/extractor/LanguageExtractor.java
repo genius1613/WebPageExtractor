@@ -1,4 +1,4 @@
-package vn.tienbm.utils;
+package vn.tienbm.webpage.extractor;
 
 /**
  * Created by tienbm on 27/04/2015.
@@ -8,7 +8,7 @@ import com.cybozu.labs.langdetect.Detector;
 import com.cybozu.labs.langdetect.DetectorFactory;
 import com.cybozu.labs.langdetect.LangDetectException;
 import com.cybozu.labs.langdetect.Language;
-import vn.tienbm.webpage.extractor.Config;
+import vn.tienbm.utils.Config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +16,18 @@ import java.util.List;
 /**
  * Created by Administrator on 3/25/2015.
  */
-public class LanguageDetector {
+public class LanguageExtractor {
     private String c_langProfile = "resources/profiles";
 
     // Private constructor prevents instantiation from other classes
-    private LanguageDetector() {
+    private LanguageExtractor() {
         try {
             DetectorFactory.loadProfile(c_langProfile);
         } catch (LangDetectException e) {
         }
     }
 
-    private LanguageDetector(Config config) {
+    private LanguageExtractor(Config config) {
         try {
             DetectorFactory.loadProfile(config.getProfilePath());
         } catch (LangDetectException e) {
@@ -40,10 +40,10 @@ public class LanguageDetector {
      * or the first access to SingletonHolder.INSTANCE, not before.
      */
     private static class LanguageDetectorHolder {
-        private static final LanguageDetector INSTANCE = new LanguageDetector();
+        private static final LanguageExtractor INSTANCE = new LanguageExtractor();
     }
 
-    public static LanguageDetector getInstance() {
+    public static LanguageExtractor getInstance() {
         return LanguageDetectorHolder.INSTANCE;
     }
 

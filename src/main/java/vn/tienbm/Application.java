@@ -1,4 +1,4 @@
-package vn.tienbm.webpage.extractor;
+package vn.tienbm;
 
 /**
  * Created by tienbm on 25/04/2015.
@@ -11,8 +11,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import vn.tienbm.utils.DateParser;
+import vn.tienbm.utils.DateTimeExtractor;
 import vn.tienbm.utils.WebpageClient;
+import vn.tienbm.webpage.extractor.Config;
+
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -34,9 +37,13 @@ public class Application {
             Document doc = Jsoup.parse(html);
             System.out.println(html);
             System.out.println("Title: " + doc.getElementsByTag("title").text());
-            long time = DateParser.getInstance(config).getDatetimeByStandardRegex(url, html);
+            long time = DateTimeExtractor.getInstance(config).getDatetimeByStandardRegex(url, html);
             System.out.println(time);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy' 'HH:mm:ss:S");
+            System.out.println(simpleDateFormat.format(new java.sql.Timestamp(time)));
+
             String text = ArticleExtractor.INSTANCE.getText(html);
+//String text = KeepEverythingExtractor.INSTANCE.getText(html);
             Elements newsHeadlines = doc.select("img");
             for (Element i : newsHeadlines) {
                 System.out.println(i.toString());
